@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Product — MNL</title>
+  <link rel="stylesheet" href="./style.css"/>
+  <script src="./config.js"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="./app.js" defer></script>
+</head>
+<body class="page" data-page="product">
+
+<header class="topbar">
+  <div class="topbar__inner container">
+    <a class="iconBtn" href="./shop.html" aria-label="Back to shop">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <a class="brandCenter" href="./index.html" aria-label="Home">
+      <div class="brandLogo">MNL</div>
+    </a>
+
+    <button class="iconBtn" id="openCart" aria-label="Cart" style="position:relative">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M6 7h15l-1.5 13h-12L6 7Z" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M9 7a3 3 0 0 1 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="badge cartCount" style="display:none">0</span>
+    </button>
+  </div>
+</header>
+
+<main class="container pageMain">
+  <div id="pdpWrap" class="pdp">
+    <div id="pdpImg" class="pdpImg skeleton"></div>
+
+    <div class="pdpInfo">
+      <div id="pdpTitle" class="pdpTitle skeletonText">Loading…</div>
+      <div id="pdpPrice" class="pdpPrice skeletonText"></div>
+      <div id="pdpMeta" class="pdpMeta"></div>
+      <div id="pdpDesc" class="pdpDesc skeletonText"></div>
+
+      <button id="addToCart" class="btn">Add to cart</button>
+      <div class="pdpNote">
+        Checkout is manual: you’ll copy your order and send it via Facebook.
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Cart Modal -->
+<div class="modalBackdrop"></div>
+<div class="modal" id="cartModal" role="dialog" aria-modal="true" aria-label="Cart">
+  <div class="modalHeader">
+    <div class="modalTitle">Cart</div>
+    <button class="iconBtn" id="closeCart" aria-label="Close cart">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <div id="cartItems" class="cartItems"></div>
+
+  <div class="cartFooter">
+    <div class="totalRow">
+      <span>Total</span>
+      <strong id="cartTotal">₱0.00</strong>
+    </div>
+
+    <a class="btn" href="./checkout.html">Checkout</a>
+    <a class="btn btnGhost" href="./shop.html">Continue shopping</a>
+  </div>
+</div>
+
+</body>
+</html>
