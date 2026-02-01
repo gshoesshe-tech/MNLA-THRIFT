@@ -8,70 +8,63 @@
   <script src="./config.js"></script>
   <script src="./app.js" defer></script>
 </head>
-<body class="page" data-page="checkout">
+<body data-page="checkout">
 
 <header class="topbar">
-  <div class="topbar__inner container">
-    <a class="iconBtn" href="./shop.html" aria-label="Back to shop">
+  <div class="topbarInner container">
+    <a class="iconBtn" href="./shop.html" aria-label="Back">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
         <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </a>
 
-    <a class="brandCenter" href="./index.html" aria-label="Home">
-      <div class="brandLogo">MNL</div>
-    </a>
+    <a class="brandCenter" href="./index.html" aria-label="Home"><div class="brandLogo">MNL</div></a>
 
-    <div style="width:44px"></div>
+    <div style="width:42px"></div>
   </div>
 </header>
 
 <main class="container pageMain" id="checkoutWrap">
-  <div class="pageHead">
+  <div class="pageTitleRow">
     <div class="pageTitle">Checkout</div>
-    <div class="pageHint">Copy your order and send it manually on Facebook.</div>
+    <div class="pageHint">Copy your order & send on Facebook.</div>
   </div>
 
   <div class="formGrid">
     <div class="field">
       <label>Full name</label>
-      <input id="fullname" placeholder="Juan Dela Cruz"/>
+      <input id="fullname" placeholder="Juan Dela Cruz" />
     </div>
-
     <div class="field">
-      <label>Facebook name / link</label>
-      <input id="facebook" placeholder="facebook.com/yourprofile"/>
+      <label>Facebook name/link</label>
+      <input id="facebook" placeholder="facebook.com/yourprofile" />
     </div>
-
     <div class="field">
       <label>Contact number</label>
-      <input id="contact" placeholder="09xx xxx xxxx"/>
+      <input id="contact" placeholder="09xx xxx xxxx" />
     </div>
-
     <div class="field">
+      <label>Courier preference</label>
+      <input id="courier" placeholder="J&T / Lalamove / etc." />
+    </div>
+    <div class="field" style="grid-column:1/-1">
       <label>Full address</label>
-      <textarea id="address" rows="3" placeholder="House / Street / Barangay / City / Province"></textarea>
+      <textarea id="address" rows="3" placeholder="House/Street/Barangay/City/Province"></textarea>
     </div>
-
-    <div class="field">
+    <div class="field" style="grid-column:1/-1">
       <label>Notes (optional)</label>
-      <textarea id="notes" rows="2" placeholder="Color, size, preferences, etc."></textarea>
+      <textarea id="notes" rows="2" placeholder="Color, size, etc."></textarea>
     </div>
   </div>
 
-  <div class="orderPreviewWrap">
-    <div class="orderPreviewHeader">
-      <div class="orderPreviewTitle">Order text</div>
-      <div class="orderPreviewHint">Copy this and paste it into Facebook message.</div>
-    </div>
+  <div class="orderBox">
+    <div class="orderBoxTitle">Order text</div>
+    <div class="orderBoxHint">Tap “Copy order”, then open Facebook and paste it.</div>
+    <pre class="orderPreview" id="orderSummary"></pre>
 
-    <pre id="orderSummary" class="orderPreview"></pre>
-
-    <div class="checkoutActions">
-      <button id="copyOrder" class="btn">Copy order</button>
-      <a class="btn btnGhost fbLink" href="#" target="_blank" rel="noopener">Open Facebook</a>
-      <button id="clearCart" class="btnDanger">Clear cart</button>
-    </div>
+    <button class="btn" id="copyOrder">Copy order</button>
+    <a class="btnGhost fbLink" href="#" target="_blank" rel="noopener">Open Facebook</a>
+    <button class="btnDanger" id="clearCart">Clear cart</button>
   </div>
 </main>
 

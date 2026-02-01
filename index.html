@@ -3,95 +3,108 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>MNL SHOP</title>
+  <title>MNL</title>
   <link rel="stylesheet" href="./style.css"/>
   <script src="./config.js"></script>
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script src="./app.js" defer></script>
 </head>
-<body class="page" data-page="home">
+<body data-page="home">
 
-  <header class="topbar">
-    <div class="topbar__inner container">
-      <button class="iconBtn" id="openDrawer" aria-label="Menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-      </button>
+<header class="topbar">
+  <div class="topbarInner container">
+    <button class="iconBtn" id="openDrawer" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
 
-      <div class="brandCenter">
-        <div class="brandLogo" aria-label="Brand">MNL</div>
-      </div>
+    <div class="brandCenter"><div class="brandLogo">MNL</div></div>
 
-      <button class="iconBtn" id="openCart" aria-label="Cart" style="position:relative">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-          <path d="M6 7h15l-1.5 13h-12L6 7Z" stroke="currentColor" stroke-width="1.6"/>
-          <path d="M9 7a3 3 0 0 1 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-        <span class="badge cartCount" style="display:none">0</span>
-      </button>
-    </div>
-  </header>
+    <button class="iconBtn" id="openCart" aria-label="Cart" style="position:relative">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M6 7h15l-1.5 13h-12L6 7Z" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M9 7a3 3 0 0 1 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="badge cartCount" style="display:none">0</span>
+    </button>
+  </div>
+</header>
 
-  <!-- Drawer -->
-  <div class="drawerBackdrop"></div>
-  <aside class="drawer" aria-label="Menu">
-    <div class="drawerTop">
-      <div class="drawerBrand">MNL</div>
-      <button class="iconBtn" id="drawerClose" aria-label="Close">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-          <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-      </button>
-    </div>
+<!-- Drawer -->
+<div class="drawerBackdrop"></div>
+<aside class="drawer">
+  <div class="drawerTop">
+    <div class="drawerBrand">MNL</div>
+    <button class="iconBtn" id="drawerClose" aria-label="Close">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <nav class="drawerNav">
+    <a class="drawerLink" href="./shop.html">Shop</a>
+    <button class="drawerLink" id="openHelpFromDrawer" type="button">Help</button>
+    <a class="drawerLink fbLink" target="_blank" rel="noopener" href="#">Order via Facebook</a>
+  </nav>
+</aside>
 
-    <nav class="drawerNav">
-      <a class="drawerLink" href="./shop.html">Shop</a>
-      <a class="drawerLink fbLink" href="#" target="_blank" rel="noopener">Message us on Facebook</a>
-      <div class="drawerNote">
-        Manual checkout: Add to cart → Checkout → Copy order → Send to Facebook.
-      </div>
-    </nav>
-  </aside>
+<!-- Landing slideshow -->
+<main class="landing" aria-label="Landing">
+  <div class="slide isActive"><img src="./assets/landing-1.jpg" alt="Landing photo 1"></div>
+  <div class="slide"><img src="./assets/landing-2.jpg" alt="Landing photo 2"></div>
+  <div class="landingOverlay"></div>
 
-  <!-- Premium split hero -->
-  <main class="hero">
-    <div class="heroSplit">
-      <div class="heroTile"><img src="./assets/landing-1.jpg" alt="Editorial landing 1"></div>
-      <div class="heroTile"><img src="./assets/landing-2.jpg" alt="Editorial landing 2"></div>
-    </div>
-
-    <div class="heroFade"></div>
-
-    <div class="heroCTA">
-      <a class="ctaBtn" href="./shop.html">SHOP</a>
-    </div>
-  </main>
-
-  <!-- Cart Modal -->
-  <div class="modalBackdrop"></div>
-  <div class="modal" id="cartModal" role="dialog" aria-modal="true" aria-label="Cart">
-    <div class="modalHeader">
-      <div class="modalTitle">Cart</div>
-      <button class="iconBtn" id="closeCart" aria-label="Close cart">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-          <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-      </button>
-    </div>
-
-    <div id="cartItems" class="cartItems"></div>
-
-    <div class="cartFooter">
-      <div class="totalRow">
-        <span>Total</span>
-        <strong id="cartTotal">₱0.00</strong>
-      </div>
-
-      <a class="btn" href="./checkout.html">Checkout</a>
-      <a class="btn btnGhost" href="./shop.html">Continue shopping</a>
+  <div class="landingNav">
+    <div class="landingNavInner">
+      <a class="landingLink" href="./shop.html">SHOP</a>
+      <a class="landingLink" href="#" id="openHelp">HELP</a>
     </div>
   </div>
+</main>
+
+<!-- Backdrop + HELP modal -->
+<div class="backdrop" id="globalBackdrop"></div>
+
+<div class="modal" id="helpModal" role="dialog" aria-modal="true" aria-label="Help">
+  <div class="modalHead">
+    <div class="modalTitle">Help</div>
+    <button class="iconBtn" id="closeHelp" aria-label="Close">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="modalBody">
+    <ol class="helpSteps">
+      <li>Go to <b>SHOP</b> and tap the items you want.</li>
+      <li>Open a product to view details and images.</li>
+      <li>Tap <b>Add to cart</b>.</li>
+      <li>Open cart → tap <b>Checkout</b>.</li>
+      <li>Fill in your details, then tap <b>Copy order</b>.</li>
+      <li>Tap <b>Open Facebook</b> and paste your order to message us.</li>
+    </ol>
+    <div class="helpNote">Checkout is manual (copy + paste), so orders stay clean and fast.</div>
+  </div>
+</div>
+
+<!-- Cart modal -->
+<div class="modal" id="cartModal" role="dialog" aria-modal="true" aria-label="Cart">
+  <div class="modalHead">
+    <div class="modalTitle">Cart</div>
+    <button class="iconBtn" id="closeCart" aria-label="Close">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="cartItems" id="cartItems"></div>
+  <div class="cartFooter">
+    <div class="totalRow"><span>Total</span><strong id="cartTotal">₱0.00</strong></div>
+    <a class="btn" href="./checkout.html">Check out</a>
+    <a class="btnGhost" href="./shop.html">Continue shopping</a>
+  </div>
+</div>
 
 </body>
 </html>

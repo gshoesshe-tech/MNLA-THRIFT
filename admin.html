@@ -9,94 +9,81 @@
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script src="./app.js" defer></script>
 </head>
-<body class="page" data-page="admin">
+<body data-page="admin">
 
 <header class="topbar">
-  <div class="topbar__inner container">
-    <a class="iconBtn" href="./shop.html" aria-label="Back to shop">
+  <div class="topbarInner container">
+    <a class="iconBtn" href="./shop.html" aria-label="Back">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
         <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </a>
 
-    <a class="brandCenter" href="./index.html" aria-label="Home">
-      <div class="brandLogo">MNL</div>
-    </a>
+    <a class="brandCenter" href="./index.html" aria-label="Home"><div class="brandLogo">MNL</div></a>
 
-    <div style="width:44px"></div>
+    <div style="width:42px"></div>
   </div>
 </header>
 
 <main class="container pageMain">
-  <div class="pageHead">
+  <div class="pageTitleRow">
     <div class="pageTitle">Admin</div>
-    <div class="pageHint">Upload products + images, toggle sold out.</div>
+    <div class="pageHint">Upload products + images</div>
   </div>
 
-  <!-- Auth -->
-  <section class="cardPanel" id="authBox">
+  <section class="panel" id="authBox">
     <div class="panelTitle">Login</div>
-    <div class="panelHint">Use your Supabase Auth admin email + password.</div>
+    <div class="panelHint">Use Supabase Auth email/password.</div>
 
-    <div class="formGrid">
+    <div class="formGrid" style="margin-top:14px">
       <div class="field">
         <label>Email</label>
-        <input id="email" placeholder="admin@email.com"/>
+        <input id="email" placeholder="admin@email.com" />
       </div>
-
       <div class="field">
         <label>Password</label>
-        <input id="password" type="password" placeholder="••••••••"/>
+        <input id="password" type="password" placeholder="••••••••" />
       </div>
     </div>
 
     <button class="btn" id="loginBtn">Login</button>
   </section>
 
-  <!-- Admin UI -->
-  <section class="cardPanel" id="adminBox" style="display:none">
-    <div class="adminTop">
-      <div>
-        <div class="panelTitle">Logged in</div>
-        <div class="panelHint">Signed in as <span id="adminEmail"></span></div>
-      </div>
-      <button class="btn btnGhost" id="logoutBtn">Logout</button>
-    </div>
+  <section class="panel" id="adminBox" style="display:none; margin-top:16px">
+    <div class="panelTitle">Logged in</div>
+    <div class="panelHint">Signed in as <span id="adminEmail"></span></div>
+
+    <button class="btnGhost" id="logoutBtn" style="margin-top:12px">Logout</button>
 
     <div class="divider"></div>
 
     <div class="panelTitle">Create product</div>
     <div class="panelHint">Category should be exactly: <b>garments</b></div>
 
-    <div class="formGrid">
+    <div class="formGrid" style="margin-top:14px">
       <div class="field">
         <label>Title</label>
-        <input id="pTitle" placeholder="Garments item name"/>
+        <input id="pTitle" placeholder="Product name" />
       </div>
-
       <div class="field">
         <label>Price</label>
-        <input id="pPrice" type="number" placeholder="0"/>
+        <input id="pPrice" type="number" placeholder="0" />
       </div>
-
       <div class="field">
         <label>Category</label>
-        <input id="pCategory" placeholder="garments"/>
+        <input id="pCategory" placeholder="garments" value="garments" />
       </div>
-
       <div class="field">
+        <label>Sold out?</label>
+        <input id="pSold" type="checkbox" />
+      </div>
+      <div class="field" style="grid-column:1/-1">
         <label>Description</label>
         <textarea id="pDesc" rows="3" placeholder="Details..."></textarea>
       </div>
-
-      <div class="field inlineField">
-        <input id="pSold" type="checkbox"/>
-        <label for="pSold" style="margin:0">Mark as sold out</label>
-      </div>
-
-      <div class="field">
-        <label>Images (upload multiple)</label>
-        <input id="pImages" type="file" accept="image/*" multiple/>
+      <div class="field" style="grid-column:1/-1">
+        <label>Images (upload 3–6 recommended)</label>
+        <input id="pImages" type="file" accept="image/*" multiple />
       </div>
     </div>
 
@@ -105,7 +92,7 @@
     <div class="divider"></div>
 
     <div class="panelTitle">Products</div>
-    <div class="panelHint">Tap “Mark Sold Out” to update quickly.</div>
+    <div class="panelHint">Toggle sold out, add images, or delete.</div>
     <div id="adminProducts" class="adminList"></div>
   </section>
 </main>
